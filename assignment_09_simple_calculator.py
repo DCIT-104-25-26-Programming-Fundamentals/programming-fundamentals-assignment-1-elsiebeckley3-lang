@@ -64,7 +64,90 @@
 #
 
 #
-# =============================================================================
-# YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-# =============================================================================
+# Function definitions for arithmetic operations
+def add(num1, num2):
+    return num1 + num2
 
+def subtract(num1, num2):
+    return num1 - num2
+
+def multiply(num1, num2):
+    return num1 * num2
+
+def divide(num1, num2):
+    if num2 == 0:
+        return "Error: Cannot divide by zero."
+    return round(num1 / num2, 2)
+
+def modulus(num1, num2):
+    if num2 == 0:
+        return "Error: Cannot divide by zero."
+    return num1 % num2
+
+def exponentiate(num1, num2):
+    return num1 ** num2
+
+def display_menu():
+    print("\n==================================")
+    print("       SIMPLE CALCULATOR          ")
+    print("==================================")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    print("5. Modulus")
+    print("6. Exponentiation")
+    print("7. Quit")
+
+
+def main():
+    while True:
+        display_menu()
+        
+        choice = input("\nSelect an operation (1-7): ").strip()
+        
+        if choice == '7':
+            print("Goodbye!")
+            break
+        
+        if choice not in ['1', '2', '3', '4', '5', '6']:
+            print("Invalid choice. Please select a valid option from 1 to 7.")
+            continue
+
+        # Get numbers from the user
+        try:
+            num1 = float(input("Enter first number : "))
+            num2 = float(input("Enter second number: "))
+        except ValueError:
+            print("Error: Invalid numeric input. Please enter valid numbers.")
+            continue
+
+        # Perform calculation based on user selection
+        if choice == '1':
+            res = add(num1, num2)
+            print(f"Result: {num1} + {num2} = {res}")
+        elif choice == '2':
+            res = subtract(num1, num2)
+            print(f"Result: {num1} - {num2} = {res}")
+        elif choice == '3':
+            res = multiply(num1, num2)
+            print(f"Result: {num1} * {num2} = {res}")
+        elif choice == '4':
+            res = divide(num1, num2)
+            if isinstance(res, str):
+                print(res)
+            else:
+                print(f"Result: {num1} / {num2} = {res}")
+        elif choice == '5':
+            res = modulus(num1, num2)
+            if isinstance(res, str):
+                print(res)
+            else:
+                print(f"Result: {num1} % {num2} = {res}")
+        elif choice == '6':
+            res = exponentiate(num1, num2)
+            print(f"Result: {num1} ** {num2} = {res}")
+
+
+if __name__ == "__main__":
+    main()

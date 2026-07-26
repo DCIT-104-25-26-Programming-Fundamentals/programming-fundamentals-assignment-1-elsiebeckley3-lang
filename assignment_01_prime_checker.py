@@ -31,7 +31,30 @@
 # - The main block must call the function and print the result.
 #
 
-# =============================================================================
-# YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-# =============================================================================
+def is_prime(n):
+    # Prime numbers must be greater than 1
+    if n <= 1:
+        return False
+    
+    # Check for factors from 2 up to the square root of n
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+            
+    return True
+
+
+def main():
+    # Prompt user for input
+    user_input = int(input("Enter a number: "))
+    
+    # Check primality and print appropriate message
+    if is_prime(user_input):
+        print(f"{user_input} is a prime number.")
+    else:
+        print(f"{user_input} is NOT a prime number.")
+
+
+if __name__ == "__main__":
+    main()
 
